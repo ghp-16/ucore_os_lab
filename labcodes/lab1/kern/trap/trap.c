@@ -10,7 +10,6 @@
 #include <kdebug.h>
 
 #define TICK_NUM 100
-int cur_ticks = 0;
 
 static void print_ticks() {
     cprintf("%d ticks\n",TICK_NUM);
@@ -151,8 +150,8 @@ trap_dispatch(struct trapframe *tf) {
     switch (tf->tf_trapno) {
     case IRQ_OFFSET + IRQ_TIMER:
         /* LAB1 2016011398 : STEP 3 */
-        cur_ticks++;
-        if(cur_ticks % TICK_NUM == 0){
+        ticks++;
+        if(ticks % TICK_NUM == 0){
             print_ticks();
         }
 
