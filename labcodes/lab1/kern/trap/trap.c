@@ -49,7 +49,7 @@ idt_init(void) {
     /* setup the entries of ISR in IDT*/
     int i;
     /*#define SETGATE(gate, istrap, sel, off, dpl)*/
-    for(i = 0;i<sizeof(idt)/sizeof(struct gatedesc); i++){
+    for(i = 0;i < 256; i++){
         SETGATE(idt[i] ,0 ,GD_KTEXT ,__vectors[i],DPL_USER);
     }
     SETGATE(idt[T_SWITCH_TOK], 0, GD_KTEXT, __vectors[T_SWITCH_TOK], DPL_USER);
